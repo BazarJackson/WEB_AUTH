@@ -41,3 +41,52 @@ docker compose version
 # Чтобы не писать sudo каждый раз
 sudo usermod -aG docker $USER
 newgrp docker
+```
+
+### 2. Установка Git
+
+```bash
+sudo apt install git -y
+git --version
+
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+```
+
+### 3. Клонирование проекта
+
+```bash
+git clone git@github.com:BazarJackson/WEB_AUTH.git
+cd WEB_AUTH
+```
+
+### 4. Создание таблиц в базе данных
+
+```bash
+docker-compose exec web python create_tables.py
+```
+
+### 5. Сборка и запуск контейнеров
+
+```bash
+docker-compose up -d --build
+```
+
+FastAPI доступен на порту 8000
+PostgreSQL на порту 5433
+
+### 6. Проверка логов пользователей
+
+```bash
+docker-compose exec web tail -f /app/user_activity.log
+```
+
+### 7. Открытие веб-страниц
+
+Главная: http://localhost:8000
+
+Регистрация: http://localhost:8000/register
+
+Логин: http://localhost:8000/login
+
+После успешного входа открывается success.html
