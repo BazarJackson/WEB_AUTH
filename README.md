@@ -103,4 +103,8 @@ docker-compose exec web tail -f /app/user_activity.log
 
 ### 8. PS.
 Подключение к PostgreSQL:
+
+```bash
 docker-compose exec db psql -U myappuser -d myappdb
+```
+
