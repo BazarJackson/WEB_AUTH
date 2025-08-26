@@ -5,6 +5,22 @@
 - **web** — FastAPI (порт 8000)  
 - **db** — PostgreSQL (порт 5433)  
 
+### Структура проекта
+WEB_AUTH/
+├─ templates/
+│  ├─ index.html
+│  ├─ register.html
+│  ├─ login.html
+│  └─ success.html
+├─ main.py
+├─ models.py
+├─ database.py
+├─ create_tables.py
+├─ requirements.txt
+├─ Dockerfile
+├─ docker-compose.yml
+└─ README.md
+
 ---
 
 ## **Функционал**
@@ -84,3 +100,7 @@ docker-compose exec web tail -f /app/user_activity.log
 Логин: http://localhost:8000/login
 
 После успешного входа открывается success.html
+
+### 8. PS.
+Подключение к PostgreSQL:
+docker-compose exec db psql -U myappuser -d myappdb
