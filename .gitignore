@@ -1,0 +1,15 @@
+# Python
+pycache/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# Logs
+*.log
+
+# Docker
+*.env
+docker-compose.override.yml
+**/pgdata

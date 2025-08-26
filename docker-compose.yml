@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: myappuser
+      POSTGRES_PASSWORD: 2803
+      POSTGRES_DB: myappdb
+    ports:
+      - "5433:5432"  # Используем 5433, чтобы не конфликтовать с локальным PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://myappuser:2803@db:5432/myappdb
+    volumes:
+      - .:/app  # Монтируем проект, чтобы шаблоны и изменения кода были доступны
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  pgdata:
